@@ -12,7 +12,12 @@ fn less_than_five(val: Option<u32>) -> Result<u32, &'static str> {
 }
 
 fn main() {
-    let input: &[Option<u32>] = &[Some(1), Some(2), None, None, Some(5)];
+    // These will fail.
+    let input: &[Option<u32>] = &[Some(0), Some(1), Some(2), None, Some(4)];
+    // let input: &[Option<u32>] = &[Some(0), Some(1), Some(2), Some(3), Some(4)];
+
+    // This will succeed.
+    // let input: &[Option<u32>] = &[Some(0), Some(1), Some(2), Some(3)];
 
     let res = input
         .iter()
@@ -24,6 +29,6 @@ fn main() {
 
     match res {
         Ok(vals) => print_elems(vals),
-        Err(e) => println!("Something went wrong!"),
+        Err(_) => println!("Something went wrong!"),
     }
 }
